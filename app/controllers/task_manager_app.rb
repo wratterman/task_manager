@@ -25,4 +25,9 @@ class TaskManagerApp < Sinatra::Base
   post '/tasks' do
     "<p>Params: #{params}</p> <p>Task params: #{params[:task]}</p>"
   end
+
+  get '/tasks/:id' do
+    @task = Task.find(params[:id])
+    erb :show
+  end
 end
