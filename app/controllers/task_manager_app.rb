@@ -7,10 +7,16 @@ class TaskManagerApp < Sinatra::Base
     erb :dashboard
   end
 
+  get '/easteregg' do
+    "Don't expect anything cool"
+  end
+
   get '/tasks' do
+    @location = params[:location]
     @tasks = Task.all
     erb :index
   end
+
 
   post '/tasks' do
     task = Task.new(params[:task])
@@ -27,6 +33,7 @@ class TaskManagerApp < Sinatra::Base
   end
 
   get '/tasks/:id' do
+    # require 'pry'; binding.pry
     @task = Task.find(params[:id])
     erb :show
   end

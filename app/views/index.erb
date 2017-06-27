@@ -1,5 +1,9 @@
 <h1>All Tasks</h1>
 
+<% if @location%>
+  <p><%= "You are located in #{@location}"%></p>
+<% end %>
+
 <% @tasks.each do |task| %>
   <h3><a href="/tasks/<%= task.id %>"><%= task.title %></a></h3>
   <p><%= task.description %></p>
